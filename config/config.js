@@ -17,8 +17,6 @@ const headers = {
 
 const chartConfig = require('./chart')
 
-const testData = require('./chartData')
-
 const specialCases = [661, 535, 408, 389, 877, 422, 664]
 
 const specialCasesMap = {
