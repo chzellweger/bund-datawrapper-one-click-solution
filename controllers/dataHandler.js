@@ -42,7 +42,7 @@ async function getData(voteId) {
       }
     })
     .then(data => {
-      const voteData = data.kantone[1]['vorlagen'][0];
+      const voteData = data.kantone[1]['vorlagen'][vote];
       return voteData;
     })
     .catch((error) => {

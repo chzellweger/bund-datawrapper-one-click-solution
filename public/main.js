@@ -1,20 +1,20 @@
-const copyButton1 = document.querySelector('#copy-1')
-const copyButton2 = document.querySelector('#copy-2')
+const copyButton1 = document.querySelector('.copy-1')
+const copyButton2 = document.querySelector('.copy-2')
 
-const startButton1 = document.querySelector('#run-1')
-const stopButton1 = document.querySelector('#stop-1');
+const startButton1 = document.querySelector('.run-1')
+const stopButton1 = document.querySelector('.stop-1');
 
-const startButton2 = document.querySelector('#run-2');
-const stopButton2 = document.querySelector('#stop-2');
+const startButton2 = document.querySelector('.run-2');
+const stopButton2 = document.querySelector('.stop-2');
 
-const linkBox1 = document.querySelector('#result-1-direct')
-const embedBox1 = document.querySelector('#result-1-embed')
+const linkBox1 = document.querySelector('.result-1-direct')
+const embedBox1 = document.querySelector('.result-1-embed')
 
-const linkBox2 = document.querySelector('#result-2-direct')
-const embedBox2 = document.querySelector('#result-2-embed')
+const linkBox2 = document.querySelector('.result-2-direct')
+const embedBox2 = document.querySelector('.result-2-embed')
 
-const editBox1 = document.querySelector('#result-1-edit')
-const editBox2 = document.querySelector('#result-2-edit')
+const editBox1 = document.querySelector('.result-1-edit')
+const editBox2 = document.querySelector('.result-2-edit')
 
 const mapBox1 = document.querySelector('.map-1')
 const mapBox2 = document.querySelector('.map-2')
