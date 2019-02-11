@@ -1,0 +1,88 @@
+const fetch = require('node-fetch')
+const config = require('../config/config')
+
+const url = config.dataSource
+const bern = config.bern
+
+async function dataHandler(vote) {
+  try {
+    const data = await getData(vote)
+
+    let output = shapeData(data)
+
+    output = handleSpecialCases(output, data)
+    console.log(output)
+    return output
+
+  } catch(error) {
+    console.log(error)
+    return new Error(error)
+  }
+}
+
+async function getData(voteId) {
+  const vote = parseInt(voteId) - 1
+
+  return fetch(url)
+  .then(res => res.json())
+  .then(json => {
+    const voteData = json.kantone[bern]['vorlagen'][vote]
+    return voteData
+  })
+  .catch(error => console.log(error))
+}
+
+function shapeData(data) {
+  //'Codes,Namen,jaStimmenInProzent,jaStimmenAbsolut,neinStimmenAbsolut,stimmbeteiligungInProzent\n'
+  const headers = config.dataHeaders
+
+  let output = headers
+
+  data.gemeinden.forEach(g => {
+    if (config.specialCases.includes(g.geoLevelnummer)) {
+      return
+    }
+
+    const code = g.geoLevelnummer
+    const name = g.geoLevelname
+    const yesPercent = g.resultat.jaStimmenInProzent || 0
+    const yesAbsolute = g.resultat.jaStimmenAbsolut  || 0
+    const noAbsolute = g.resultat.neinStimmenAbsolut  || 0
+    const participation = g.resultat.stimmbeteiligungInProzent  || 0
+
+    output += `${code},${name},${yesPercent},${yesAbsolute},${noAbsolute},${participation}\n`
+  })
+
+  return output
+}
+
+function handleSpecialCases(inputString, data) {
+  let outputString = inputString
+
+  const specialCases = config.specialCases
+  const specialCasesMap = config.specialCasesMap
+
+  specialCases.forEach(specialCase => {
+    const specialCaseMappedNumber = specialCasesMap[specialCase.toString()]['number']
+
+    mappedGemeinde = data.gemeinden.find(el => {
+      return specialCaseMappedNumber.toString() === el.geoLevelnummer
+    })
+
+    const number = specialCase
+    const name = specialCasesMap[specialCase.toString()]['name']
+    const jaStimmenInProzent = mappedGemeinde.resultat.jaStimmenInProzent
+    const jaStimmenAbsolut = mappedGemeinde.resultat.jaStimmenAbsolut
+    const neinStimmenAbsolut = mappedGemeinde.resultat.neinStimmenAbsolut
+    const stimmbeteiligungInProzent = mappedGemeinde.resultat.stimmbeteiligungInProzent
+
+    const row = `${number},${name},${jaStimmenInProzent},${jaStimmenAbsolut},${neinStimmenAbsolut},${stimmbeteiligungInProzent}\n`
+
+    console.log(row)
+
+    outputString += row
+  })
+  return outputString
+}
+
+module.exports = dataHandler

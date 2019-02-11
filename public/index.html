@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>The chart machine (10. 2. 2019)</h1>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="part part-1 col-sm-4">
+          <button id="run-1" class="run primary rounded shadowed">
+            Run chart machine (Polizeigesetz)
+          </button>
+          <button id="stop-1" class="run secondary rounded shadowed">
+            Reset/Stop chart machine (Polizeigesetz)
+          </button>
+          <div class="loader loader-1"></div>
+          <div class="result-box result-box-1">
+            <p>Here's your chart:</p>
+            <div class="map map-1"></div>
+            <p>Copy for embedd:</p>
+            <pre width="100" id="result-1-embed"></pre>
+            <button id="copy-1" class="rounded shadowed">
+              Copy to clipboard
+            </button>
+            <p>
+              Direct Link: <a id="result-1-direct" href="" target="_blank"></a>
+            </p>
+            <p>
+              Direct Edit-Link:
+              <a id="result-1-edit" href="" target="_blank"></a>
+            </p>
+          </div>
+          <div class="error-box error-box-1">Sorry, something went wrong</div>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+    </div>
+    <hr />
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 part part-2">
+          <button id="run-2" class="run primary rounded shadowed">
+            Run chart machine (Energiegesetz)
+          </button>
+          <button id="stop-2" class="run secondary rounded shadowed">
+            Reset/Stop chart machine (Energiegesetz)
+          </button>
+          <div class="loader loader-2"></div>
+          <div class="result-box result-box-2">
+            <p>Here's your chart:</p>
+            <div class="map map-2"></div>
+            <p>Copy for embedd:</p>
+            <pre width="100" id="result-2-embed"></pre>
+            <button id="copy-2" class="rounded shadowed">
+              Copy to clipboard
+            </button>
+            <p>
+              Direct Link: <a id="result-2-direct" href="" target="_blank"></a>
+            </p>
+            <p>
+              Direct Edit-Link:
+              <a id="result-2-edit" href="" target="_blank"></a>
+            </p>
+          </div>
+          <div class="error-box error-box-2">Sorry, something went wrong</div>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>contact: christian.zellweger@derbund.ch</p>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
