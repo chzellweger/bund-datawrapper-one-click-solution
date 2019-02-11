@@ -35,7 +35,6 @@ module.exports = {
   headers,
   dataHeaders,
   chartConfig,
-  testData,
   dataSource,
   bern,
   specialCases,
