@@ -21,15 +21,34 @@ async function dataHandler(vote) {
 }
 
 async function getData(voteId) {
-  const vote = parseInt(voteId) - 1
+  const vote = parseInt(voteId) - 1;
 
-  return fetch(url)
-  .then(res => res.json())
-  .then(json => {
-    const voteData = json.kantone[bern]['vorlagen'][vote]
-    return voteData
-  })
-  .catch(error => console.log(error))
+  return fetch(url, { headers: { 'Accept': 'application/json' }})
+    .then((res) => {
+      const contentType = res.headers.get('content-type');
+      console.log(contentType);
+
+      if (contentType === 'application/octet-stream') {
+        return res.text().then(s => {
+          s = s.trim()
+          const json = JSON.parse(s)
+          return json
+        })
+      } else if (contentType === 'application/json') {
+        return res.json()
+      } else {
+        console.log('error');
+        throw new Error(`content type unknown. Type: ${contentType}`);
+      }
+    })
+    .then(data => {
+      const voteData = data.kantone[1]['vorlagen'][0];
+      return voteData;
+    })
+    .catch((error) => {
+      console.log(error)
+      return new Error(error)
+    });
 }
 
 function shapeData(data) {

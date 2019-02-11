@@ -42,7 +42,7 @@ startButton1.addEventListener('click', () => {
   resultBox1.hidden = true
   errorBox1.hidden = true
 
-  fetch('/chart-machine/start/1')
+  fetch('/chart-machine/machine/start/1')
     .then((res) => res.json())
     .then((json) => {
       console.log(json)
@@ -71,7 +71,7 @@ stopButton1.addEventListener('click', () => {
   resultBox1.hidden = true
   errorBox1.hidden = true
 
-  fetch('/chart-machine/stop/1')
+  fetch('/chart-machine/machine/stop/1')
     .then((res) => res.json())
     .then((json) => console.log(json))
     .catch((e) => error(e));
@@ -82,7 +82,7 @@ startButton2.addEventListener('click', () => {
   resultBox2.hidden = true
   errorBox2.hidden = true
 
-  fetch('/chart-machine/start/2')
+  fetch('/chart-machine/machine/start/2')
     .then((res) => res.json())
     .then((json) => {
       console.log(json)
@@ -112,7 +112,7 @@ stopButton2.addEventListener('click', () => {
   resultBox2.hidden = true
   errorBox2.hidden = true
 
-  fetch('/chart-machine/stop/2')
+  fetch('/chart-machine/machine/stop/2')
     .then((res) => res.json())
     .then((json) => console.log(json))
     .catch((e) => error(e));
