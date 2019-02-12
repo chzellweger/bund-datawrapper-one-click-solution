@@ -85,18 +85,7 @@ startButton1.addEventListener('click', () => {
 // });
 
 dataButton1.addEventListener('click', () => {
-  fetch('/chart-machine/data/1/csv', {
-    headers: {
-      accept: 'text/csv'
-    },
-    responseType: 'blob'
-  })
-    .then((res) => res.blob())
-    .then((blob) => URL.createObjectURL(blob))
-    .then((url) => {
-      window.open(url, '_blank');
-      URL.revokeObjectURL(url);
-    });
+  window.location.assign('https://bund-dw-oneclick.herokuapp.com/chart-machine/data/1/csv');
 });
 
 startButton2.addEventListener('click', () => {
@@ -145,7 +134,7 @@ startButton2.addEventListener('click', () => {
 // });
 
 dataButton2.addEventListener('click', () => {
-  fetch('/chart-machine/data/2/csv');
+  window.location.assign('https://bund-dw-oneclick.herokuapp.com/chart-machine/data/2/csv');
 });
 
 copyButton1.addEventListener('click', () => {
