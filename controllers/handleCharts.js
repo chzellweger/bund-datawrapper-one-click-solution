@@ -24,7 +24,7 @@ const handleCharts = async ({action, vote}) => {
 }
 
 async function handleVote(action, vote) {
-  if (/*action === 'start' && state['vote' + vote]['running'] === false*/true) {
+  if (true/*action === 'start' && state['vote' + vote]['running'] === false*/) {
     console.log('spinning up chart-machine...')
     state['vote' + vote]['running'] = true
 

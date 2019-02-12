@@ -71,7 +71,8 @@ async function publishChart(chartId) {
     return {
       chartId: json.data.id,
       publicUrl: json.data.publicUrl,
-      embed: json.data.metadata.publish['embed-codes']
+      embed: json.data.metadata.publish['embed-codes'],
+      publishedAt: json.data.publishedAt
     }
   })
   .catch(e => new Error(e))
