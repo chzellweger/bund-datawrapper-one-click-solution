@@ -46,12 +46,12 @@ startButton1.addEventListener('click', () => {
     .then((res) => res.json())
     .then((json) => {
       console.log(json);
-      linkBox1.text = json.publicUrl.publicUrl;
+      linkBox1.innerHTML = `<mark>${json.publicUrl.publicUrl}</mark>`;
       linkBox1.href = json.publicUrl.publicUrl;
 
-      editBox1.text = `https://app.datawrapper.de/map/${
+      editBox1.innerHTML = `<mark>https://app.datawrapper.de/map/${
         json.publicUrl.chartId
-      }/visualize`;
+      }/visualize</mark>`;
       editBox1.href = `https://app.datawrapper.de/map/${
         json.publicUrl.chartId
       }/visualize`;
@@ -81,12 +81,12 @@ startButton2.addEventListener('click', () => {
     .then((json) => {
       console.log(json);
 
-      linkBox2.text = json.publicUrl.publicUrl;
+      linkBox2.innerHTML = `<mark>${json.publicUrl.publicUrl}</mark>`;
       linkBox2.href = json.publicUrl.publicUrl;
 
-      editBox2.text = `https://app.datawrapper.de/map/${
+      editBox2.innerHTML = `<mark>https://app.datawrapper.de/map/${
         json.publicUrl.chartId
-      }/visualize`;
+      }/visualize</mark>`;
       editBox2.href = `https://app.datawrapper.de/map/${
         json.publicUrl.chartId
       }/visualize`;
