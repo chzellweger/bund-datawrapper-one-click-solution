@@ -44,6 +44,11 @@ async function handleVote(action, vote) {
       const publicUrl = await chartHandlers.publishChart(id)
       console.log(publicUrl)
 
+      // interval = setInterval(() => {
+      //   console.log('hello world again...')
+      //   // updateChart(id)
+      // }, 600);
+
       return publicUrl
 
     } catch(error) {
@@ -51,10 +56,6 @@ async function handleVote(action, vote) {
       return new Error(error)
     }
 
-    // interval = setInterval(() => {
-    //   console.log('hello world again...')
-    //   // updateChart(id)
-    // }, 600);
 
   } else if (action === 'stop' && state['vote' + vote]['running'] === true) {
     state['vote' + vote]['running'] = false

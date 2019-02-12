@@ -35,8 +35,6 @@ router.get('/data/:vote/csv', async (req, res) => {
 
     res.set({'content-type': 'text/csv'})
     res.send(data)
-
-    res.json(data)
     res.end()
   } catch(error) {
     res.json({status: "failed", message: error})
