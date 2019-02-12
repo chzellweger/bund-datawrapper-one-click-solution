@@ -2,19 +2,16 @@ const copyButton1 = document.querySelector('.copy-1');
 const copyButton2 = document.querySelector('.copy-2');
 
 const startButton1 = document.querySelector('.run-1');
-const stopButton1 = document.querySelector('.stop-1');
-
 const startButton2 = document.querySelector('.run-2');
-const stopButton2 = document.querySelector('.stop-2');
 
 const dataButton1 = document.querySelector('.data-1');
 const dataButton2 = document.querySelector('.data-2');
 
 const linkBox1 = document.querySelector('.result-1-direct');
-const embedBox1 = document.querySelector('.result-1-embed');
-
 const linkBox2 = document.querySelector('.result-2-direct');
+
 const embedBox2 = document.querySelector('.result-2-embed');
+const embedBox1 = document.querySelector('.result-1-embed');
 
 const editBox1 = document.querySelector('.result-1-edit');
 const editBox2 = document.querySelector('.result-2-edit');
@@ -74,16 +71,6 @@ startButton1.addEventListener('click', () => {
     });
 });
 
-// stopButton1.addEventListener('click', () => {
-//   resultBox1.hidden = true
-//   errorBox1.hidden = true
-
-//   fetch('/chart-machine/machine/stop/1')
-//     .then((res) => res.json())
-//     .then((json) => console.log(json))
-//     .catch((e) => console.log(e));
-// });
-
 dataButton1.addEventListener('click', () => {
   window.location.assign('https://bund-dw-oneclick.herokuapp.com/chart-machine/data/1/csv');
 });
@@ -96,7 +83,6 @@ startButton2.addEventListener('click', () => {
   fetch('/chart-machine/machine/start/2')
     .then((res) => res.json())
     .then((json) => {
-      console.log(json);
       console.log(json);
 
       linkBox2.text = json.publicUrl.publicUrl;
@@ -122,16 +108,6 @@ startButton2.addEventListener('click', () => {
       errorBox2.hidden = false;
     });
 });
-
-// stopButton2.addEventListener('click', () => {
-//   resultBox2.hidden = true
-//   errorBox2.hidden = true
-
-//   fetch('/chart-machine/machine/stop/2')
-//     .then((res) => res.json())
-//     .then((json) => console.log(json))
-//     .catch((e) => error(e));
-// });
 
 dataButton2.addEventListener('click', () => {
   window.location.assign('https://bund-dw-oneclick.herokuapp.com/chart-machine/data/2/csv');
