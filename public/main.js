@@ -71,10 +71,6 @@ startButton1.addEventListener('click', () => {
     });
 });
 
-dataButton1.addEventListener('click', () => {
-  window.location.assign('https://bund-dw-oneclick.herokuapp.com/chart-machine/data/1/csv');
-});
-
 startButton2.addEventListener('click', () => {
   loader2.hidden = false;
   resultBox2.hidden = true;
@@ -107,10 +103,6 @@ startButton2.addEventListener('click', () => {
       resultBox2.hidden = true;
       errorBox2.hidden = false;
     });
-});
-
-dataButton2.addEventListener('click', () => {
-  window.location.assign('https://bund-dw-oneclick.herokuapp.com/chart-machine/data/2/csv');
 });
 
 copyButton1.addEventListener('click', () => {
