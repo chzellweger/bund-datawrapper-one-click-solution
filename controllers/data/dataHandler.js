@@ -1,24 +1,8 @@
 const fetch = require('node-fetch')
-const config = require('../config/config')
+const config = require('../../config/config')
 
 const url = config.dataSource
 const bern = config.bern
-
-async function dataHandler(vote) {
-  try {
-    const data = await getData(vote)
-
-    let output = shapeData(data)
-
-    output = handleSpecialCases(output, data)
-    console.log(output)
-    return output
-
-  } catch(error) {
-    console.log(error)
-    return new Error(error)
-  }
-}
 
 async function getData(voteId) {
   const vote = parseInt(voteId) - 1;
@@ -104,4 +88,8 @@ function handleSpecialCases(inputString, data) {
   return outputString
 }
 
-module.exports = dataHandler
+module.exports = {
+  getData,
+  shapeData,
+  handleSpecialCases
+}

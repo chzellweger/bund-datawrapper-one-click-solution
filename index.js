@@ -10,6 +10,8 @@ const bodyParser = require('body-parser');
 
 const port = process.env.PORT || 3000;
 
+const routes = require('./routes/routes')
+
 const app = express();
 
 
@@ -20,6 +22,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static('public'))
 
-app.use('/chart-machine', require('./routes/routes.js'))
+app.use('/chart-machine', routes)
 
 app.listen(port, () => console.log(`chart-machine is listening on port ${port}!`));

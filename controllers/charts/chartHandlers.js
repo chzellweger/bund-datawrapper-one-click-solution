@@ -1,6 +1,7 @@
 const fetch = require('node-fetch')
-const config = require('../config/config')
-const dataHandler = require('./dataHandler')
+const config = require('../../config/config')
+
+const handleData = require('../data/handleData')
 
 async function createChart(vote) {
   console.log('creating chart...')
@@ -20,7 +21,7 @@ async function createChart(vote) {
 
 async function addData(vote, id) {
   console.log('adding data....')
-  const data = await dataHandler(vote)
+  const data = await handleData(vote)
 
   const url = config.url
   const headers = config.headers
