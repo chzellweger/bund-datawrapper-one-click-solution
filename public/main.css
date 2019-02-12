@@ -2,6 +2,11 @@
   width: 100%;
 }
 
+.map {
+  padding: 10px;
+  border: 1px solid #E0E0E0;
+}
+
 .loader {
   margin: 100px auto;
   font-size: 25px;
