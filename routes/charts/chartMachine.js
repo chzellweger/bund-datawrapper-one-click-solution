@@ -3,26 +3,20 @@ const router = require('express').Router()
 
 const handleCharts = require('../../controllers/charts/handleCharts')
 
-router.get('/:action/:vote', async (req, res) => {
+router.get('/:vote', async (req, res) => {
   console.log(req.params)
   try {
     const publicUrl = await handleCharts(req.params.vote)
 
     const response = {
       "status": "ok",
-      payload: req.params
+      payload: req.params,
+      chart: publicUrl
     }
-
-    if (req.params.action === 'start') {
-      res.json(Object.assign(response, {publicUrl}))
-    } else if (req.params.action === 'stop') {
-      res.json(response)
-    } else {
-      throw new Error(`action unknown: ${req.params.action}`)
-    }
+    res.json(response)
     res.end()
   } catch (error) {
-    res.json({status: "failed", message: error})
+    res.status(400).json({status: "failed", message: error.message})
     res.end()
   }
 })

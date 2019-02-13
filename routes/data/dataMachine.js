@@ -5,32 +5,29 @@ const csvjson = require('csvjson')
 
 const handleData = require('../../controllers/data/handleData')
 
-router.get('/:vote/csv', async (req, res) => {
+router.get('/:vote', async (req, res) => {
   try {
-    const data = await handleData(req.params.vote)
+    const vote = req.params.vote
+    const requestDataType = req.query['data-type']
 
-    res.set({
-      'content-type': 'text/csv',
-      'access-control-allow-origin': '*'
-    })
-    res.send(data)
-    res.end()
+    const data = await handleData(vote)
+
+    res.set({'Access-Control-Allow-Origin': '*'})
+
+    if (requestDataType === 'csv') {
+      res.set({'Content-Disposition': `attachment; filename=abstimmung${vote}.csv`})
+      res.send(data)
+      res.end()
+    } else if (requestDataType === 'json') {
+      const json = csvjson.toObject(data)
+      res.json(json)
+      res.end()
+    } else {
+      throw new Error("requested data-type is unknown. request '?data-type=<json|csv]>''")
+    }
   } catch (error) {
-    res.json({status: "failed", message: error})
-    res.end()
-  }
-})
-
-router.get('/:vote/json', async (req, res) => {
-  try {
-    const data = await handleData(req.params.vote)
-
-    const json = csvjson.toObject(data)
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.json(json)
-    res.end()
-  } catch (error) {
-    res.json({status: "failed", message: error})
+    console.log(error)
+    res.status(400).json({status: "failed", message: error.message})
     res.end()
   }
 })

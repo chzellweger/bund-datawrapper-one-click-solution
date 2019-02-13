@@ -50,23 +50,23 @@ startButton1.addEventListener('click', () => {
   resultBox1.hidden = true;
   errorBox1.hidden = true;
 
-  fetch('/chart-machine/machine/start/1')
+  fetch('/chart-machine/machine/1')
     .then((res) => res.json())
     .then((json) => {
       console.log(json);
-      linkBox1.innerHTML = `<mark>${json.publicUrl.publicUrl}</mark>`;
-      linkBox1.href = json.publicUrl.publicUrl;
+      linkBox1.innerHTML = `<mark>${json.chart.publicUrl}</mark>`;
+      linkBox1.href = json.chart.publicUrl;
 
       editBox1.innerHTML = `<mark>https://app.datawrapper.de/map/${
-        json.publicUrl.chartId
+        json.chart.chartId
       }/visualize</mark>`;
       editBox1.href = `https://app.datawrapper.de/map/${
-        json.publicUrl.chartId
+        json.chart.chartId
       }/visualize`;
 
-      mapBox1.innerHTML = json.publicUrl.embed['embed-method-responsive'];
+      mapBox1.innerHTML = json.chart.embed['embed-method-responsive'];
 
-      embedBox1.innerText = json.publicUrl.embed['embed-method-responsive'];
+      embedBox1.innerText = json.chart.embed['embed-method-responsive'];
 
       loader1.hidden = true;
       resultBox1.hidden = false;
@@ -84,23 +84,23 @@ startButton2.addEventListener('click', () => {
   resultBox2.hidden = true;
   errorBox2.hidden = true;
 
-  fetch('/chart-machine/machine/start/2')
+  fetch('/chart-machine/machine/2')
     .then((res) => res.json())
     .then((json) => {
       console.log(json);
 
-      linkBox2.innerHTML = `<mark>${json.publicUrl.publicUrl}</mark>`;
-      linkBox2.href = json.publicUrl.publicUrl;
+      linkBox2.innerHTML = `<mark>${json.chart.publicUrl}</mark>`;
+      linkBox2.href = json.chart.publicUrl;
 
       editBox2.innerHTML = `<mark>https://app.datawrapper.de/map/${
-        json.publicUrl.chartId
+        json.chart.chartId
       }/visualize</mark>`;
       editBox2.href = `https://app.datawrapper.de/map/${
-        json.publicUrl.chartId
+        json.chart.chartId
       }/visualize`;
 
-      mapBox2.innerHTML = json.publicUrl.embed['embed-method-responsive'];
-      embedBox2.innerText = json.publicUrl.embed['embed-method-responsive'];
+      mapBox2.innerHTML = json.chart.embed['embed-method-responsive'];
+      embedBox2.innerText = json.chart.embed['embed-method-responsive'];
 
       loader2.hidden = true;
       resultBox2.hidden = false;
