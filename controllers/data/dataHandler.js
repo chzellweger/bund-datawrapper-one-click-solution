@@ -26,7 +26,7 @@ async function getData(voteId) {
       }
     })
     .then(data => {
-      const voteData = data.kantone[1]['vorlagen'][vote];
+      const voteData = data.kantone[bern]['vorlagen'][vote];
       return voteData;
     })
     .catch((error) => {
@@ -68,7 +68,7 @@ function handleSpecialCases(inputString, data) {
   specialCases.forEach(specialCase => {
     const specialCaseMappedNumber = specialCasesMap[specialCase.toString()]['number']
 
-    mappedGemeinde = data.gemeinden.find(el => {
+    const mappedGemeinde = data.gemeinden.find(el => {
       return specialCaseMappedNumber.toString() === el.geoLevelnummer
     })
 

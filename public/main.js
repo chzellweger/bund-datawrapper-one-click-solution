@@ -1,11 +1,19 @@
+function copyToClip(str) {
+  function listener(e) {
+    e.clipboardData.setData('text/html', str);
+    e.clipboardData.setData('text/plain', str);
+    e.preventDefault();
+  }
+  document.addEventListener('copy', listener);
+  document.execCommand('copy');
+  document.removeEventListener('copy', listener);
+}
+
 const copyButton1 = document.querySelector('.copy-1');
 const copyButton2 = document.querySelector('.copy-2');
 
 const startButton1 = document.querySelector('.run-1');
 const startButton2 = document.querySelector('.run-2');
-
-const dataButton1 = document.querySelector('.data-1');
-const dataButton2 = document.querySelector('.data-2');
 
 const linkBox1 = document.querySelector('.result-1-direct');
 const linkBox2 = document.querySelector('.result-2-direct');
@@ -112,14 +120,3 @@ copyButton1.addEventListener('click', () => {
 copyButton2.addEventListener('click', () => {
   copyToClip(embedBox2.innerText);
 });
-
-function copyToClip(str) {
-  function listener(e) {
-    e.clipboardData.setData('text/html', str);
-    e.clipboardData.setData('text/plain', str);
-    e.preventDefault();
-  }
-  document.addEventListener('copy', listener);
-  document.execCommand('copy');
-  document.removeEventListener('copy', listener);
-}

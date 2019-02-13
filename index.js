@@ -1,13 +1,11 @@
 require('dotenv').config();
 
-const http = require('http');
-const fs = require('fs');
-
 const express = require('express');
 
 const helmet = require('helmet')
 const bodyParser = require('body-parser');
 
+//eslint-disable-next-line
 const port = process.env.PORT || 3000;
 
 const routes = require('./routes/routes')

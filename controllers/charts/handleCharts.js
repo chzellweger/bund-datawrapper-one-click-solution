@@ -1,6 +1,6 @@
 const chartHandlers = require('./chartHandlers');
 
-const handleCharts = async ({action, vote}) => {
+const handleCharts = async (vote) => {
   console.log('spinning up chart-machine...');
 
   try {
@@ -8,10 +8,10 @@ const handleCharts = async ({action, vote}) => {
     console.log('now your chart has the id: ' + id);
 
     console.log('now: add data...');
-    const result = await chartHandlers.addData(vote, id);
+    await chartHandlers.addData(vote, id);
 
     console.log('now, style the chart...');
-    const styledChart = await chartHandlers.editChart(id, vote);
+    await chartHandlers.editChart(id, vote);
 
     console.log('now, publish your chart...');
     const publicUrl = await chartHandlers.publishChart(id);

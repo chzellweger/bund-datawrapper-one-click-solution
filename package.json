@@ -9,6 +9,9 @@
   },
   "author": "Christian Zellweger <christian.zellweger@derbund.ch>",
   "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.13.0"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "csvjson": "^5.1.0",

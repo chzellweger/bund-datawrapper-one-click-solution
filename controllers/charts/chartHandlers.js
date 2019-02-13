@@ -3,7 +3,7 @@ const config = require('../../config/config')
 
 const handleData = require('../data/handleData')
 
-async function createChart(vote) {
+async function createChart() {
   console.log('creating chart...')
 
   const url = config.url

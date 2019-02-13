@@ -1,3 +1,4 @@
+//eslint-disable-next-line
 const router = require('express').Router()
 
 const csvjson = require('csvjson')
@@ -11,7 +12,7 @@ router.get('/:vote/csv', async (req, res) => {
     res.set({'content-type': 'text/csv'})
     res.send(data)
     res.end()
-  } catch(error) {
+  } catch (error) {
     res.json({status: "failed", message: error})
     res.end()
   }
@@ -25,7 +26,7 @@ router.get('/:vote/json', async (req, res) => {
 
     res.json(json)
     res.end()
-  } catch(error) {
+  } catch (error) {
     res.json({status: "failed", message: error})
     res.end()
   }

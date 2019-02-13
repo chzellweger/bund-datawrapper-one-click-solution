@@ -10,6 +10,8 @@ const titles = {
 const dataHeaders = 'Codes,Namen,jaStimmenInProzent,jaStimmenAbsolut,neinStimmenAbsolut,stimmbeteiligungInProzent\n'
 
 const url = "https://api.datawrapper.de"
+
+//eslint-disable-next-line
 const token = process.env.DATAWRAPPER_TOKEN
 const headers = {
   "Authorization": `Bearer ${token}`
@@ -35,7 +37,6 @@ module.exports = {
   headers,
   dataHeaders,
   chartConfig,
-  dataSource,
   bern,
   specialCases,
   specialCasesMap,

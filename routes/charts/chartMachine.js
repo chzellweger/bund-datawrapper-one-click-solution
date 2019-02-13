@@ -1,3 +1,4 @@
+//eslint-disable-next-line
 const router = require('express').Router()
 
 const handleCharts = require('../../controllers/charts/handleCharts')
@@ -5,7 +6,7 @@ const handleCharts = require('../../controllers/charts/handleCharts')
 router.get('/:action/:vote', async (req, res) => {
   console.log(req.params)
   try {
-    const publicUrl = await handleCharts(req.params)
+    const publicUrl = await handleCharts(req.params.vote)
 
     const response = {
       "status": "ok",
@@ -17,10 +18,10 @@ router.get('/:action/:vote', async (req, res) => {
     } else if (req.params.action === 'stop') {
       res.json(response)
     } else {
-      throw new Error(`action unknown: ${rep.params.action}`)
+      throw new Error(`action unknown: ${req.params.action}`)
     }
     res.end()
-  } catch(error) {
+  } catch (error) {
     res.json({status: "failed", message: error})
     res.end()
   }
