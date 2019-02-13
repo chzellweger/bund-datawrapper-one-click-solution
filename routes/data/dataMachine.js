@@ -9,7 +9,10 @@ router.get('/:vote/csv', async (req, res) => {
   try {
     const data = await handleData(req.params.vote)
 
-    res.set({'content-type': 'text/csv'})
+    res.set({
+      'content-type': 'text/csv',
+      'access-control-allow-origin': '*'
+    })
     res.send(data)
     res.end()
   } catch (error) {
@@ -23,7 +26,7 @@ router.get('/:vote/json', async (req, res) => {
     const data = await handleData(req.params.vote)
 
     const json = csvjson.toObject(data)
-
+    res.setHeader('Access-Control-Allow-Origin', '*')
     res.json(json)
     res.end()
   } catch (error) {

@@ -19,7 +19,15 @@ const headers = {
 
 const chartConfig = require('./chart')
 
-const specialCases = [661, 535, 408, 389, 877, 422, 664]
+const specialCases = [
+  661,
+  535,
+  408,
+  389,
+  877,
+  422,
+  664
+]
 
 const specialCasesMap = {
   661: {number: 669, name: 'Clavaleyres'},
