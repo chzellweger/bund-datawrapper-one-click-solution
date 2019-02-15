@@ -65,7 +65,7 @@ function shapeData(data) {
 function handleSpecialCases(inputString, data) {
   let outputString = inputString
 
-  const specialCases = config.specialCases
+  const specialCases = Object.keys(config.specialCasesMap).map(el => parseInt(el))
   const specialCasesMap = config.specialCasesMap
 
   specialCases.forEach((specialCase) => {
