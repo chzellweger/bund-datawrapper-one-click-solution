@@ -15,7 +15,7 @@ router.get('/:vote', async (req, res) => {
     res.set({'Access-Control-Allow-Origin': '*'})
 
     if (requestDataType === 'csv') {
-      res.set({'Content-Disposition': `attachment; filename=abstimmung${vote}.csv`})
+      res.set({'Content-Disposition': `attachment filename=abstimmung${vote}.csv`})
       res.send(data)
       res.end()
     } else if (requestDataType === 'json') {

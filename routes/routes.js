@@ -1,5 +1,5 @@
 //eslint-disable-next-line
-const router = require('express').Router();
+const router = require('express').Router()
 
 const chartMachine = require('./charts/chartMachine')
 const dataMachine = require('./data/dataMachine')

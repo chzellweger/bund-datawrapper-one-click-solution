@@ -9,14 +9,15 @@ router.get('/:vote', async (req, res) => {
     const publicUrl = await handleCharts(req.params.vote)
 
     const response = {
-      "status": "ok",
+      status: 'ok',
       payload: req.params,
       chart: publicUrl
     }
     res.json(response)
     res.end()
   } catch (error) {
-    res.status(400).json({status: "failed", message: error.message})
+    console.log(error)
+    res.status(400).json({ status: 'failed', message: error.message })
     res.end()
   }
 })

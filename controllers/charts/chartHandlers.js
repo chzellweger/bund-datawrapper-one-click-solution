@@ -14,7 +14,7 @@ async function createChart() {
   })
   .then(res => res.json())
   .then(json => json.data[0].id)
-  .catch(e => new Error(e))
+  .catch(error => error)
 
   return chartId
 }
@@ -32,7 +32,7 @@ async function addData(vote, id) {
     body: data
   })
   .then(res => res.json()).then(json => json)
-  .catch(e => new Error(e))
+  .catch(error => error)
 
   return result
 }
@@ -52,7 +52,7 @@ async function editChart(chartId, voteId) {
   })
   .then(res => res.json())
   .then(json => json)
-  .catch(e => new Error(e))
+  .catch(error => error)
 
   return result
 }
@@ -76,7 +76,7 @@ async function publishChart(chartId) {
       publishedAt: json.data.publishedAt
     }
   })
-  .catch(e => new Error(e))
+  .catch(error => error)
 
   return result
 }
