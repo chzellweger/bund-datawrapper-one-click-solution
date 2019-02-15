@@ -7,13 +7,17 @@ const bern = config.bern
 async function getData(voteId) {
   const vote = parseInt(voteId) - 1
 
-  return fetch(url, { headers: { 'Accept': 'application/json' }})
+  return fetch(url, {
+    headers: {
+      Accept: 'application/json'
+    }
+  })
     .then((res) => {
       const contentType = res.headers.get('content-type')
       console.log(contentType)
 
       if (contentType === 'application/octet-stream') {
-        return res.text().then(s => {
+        return res.text().then((s) => {
           s = s.trim()
           const json = JSON.parse(s)
           return json
@@ -24,7 +28,7 @@ async function getData(voteId) {
         throw new Error(`content type unknown. Type: ${contentType}`)
       }
     })
-    .then(data => {
+    .then((data) => {
       const voteData = data.kantone[bern]['vorlagen'][vote]
       return voteData
     })
@@ -39,7 +43,7 @@ function shapeData(data) {
 
   let output = headers
 
-  data.gemeinden.forEach(g => {
+  data.gemeinden.forEach((g) => {
     if (config.specialCases.includes(g.geoLevelnummer)) {
       return
     }
@@ -47,9 +51,9 @@ function shapeData(data) {
     const code = g.geoLevelnummer
     const name = g.geoLevelname
     const yesPercent = g.resultat.jaStimmenInProzent || 0
-    const yesAbsolute = g.resultat.jaStimmenAbsolut  || 0
-    const noAbsolute = g.resultat.neinStimmenAbsolut  || 0
-    const participation = g.resultat.stimmbeteiligungInProzent  || 0
+    const yesAbsolute = g.resultat.jaStimmenAbsolut || 0
+    const noAbsolute = g.resultat.neinStimmenAbsolut || 0
+    const participation = g.resultat.stimmbeteiligungInProzent || 0
 
     output += `${code},${name},${yesPercent},${yesAbsolute},${noAbsolute},${participation}\n`
   })
@@ -63,10 +67,11 @@ function handleSpecialCases(inputString, data) {
   const specialCases = config.specialCases
   const specialCasesMap = config.specialCasesMap
 
-  specialCases.forEach(specialCase => {
-    const specialCaseMappedNumber = specialCasesMap[specialCase.toString()]['number']
+  specialCases.forEach((specialCase) => {
+    const specialCaseMappedNumber =
+      specialCasesMap[specialCase.toString()]['number']
 
-    const mappedGemeinde = data.gemeinden.find(el => {
+    const mappedGemeinde = data.gemeinden.find((el) => {
       return specialCaseMappedNumber.toString() === el.geoLevelnummer
     })
 
@@ -75,7 +80,8 @@ function handleSpecialCases(inputString, data) {
     const jaStimmenInProzent = mappedGemeinde.resultat.jaStimmenInProzent
     const jaStimmenAbsolut = mappedGemeinde.resultat.jaStimmenAbsolut
     const neinStimmenAbsolut = mappedGemeinde.resultat.neinStimmenAbsolut
-    const stimmbeteiligungInProzent = mappedGemeinde.resultat.stimmbeteiligungInProzent
+    const stimmbeteiligungInProzent =
+      mappedGemeinde.resultat.stimmbeteiligungInProzent
 
     const row = `${number},${name},${jaStimmenInProzent},${jaStimmenAbsolut},${neinStimmenAbsolut},${stimmbeteiligungInProzent}\n`
 

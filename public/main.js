@@ -1,8 +1,8 @@
-function copyToClip(str) {
-  function listener(e) {
-    e.clipboardData.setData('text/html', str)
-    e.clipboardData.setData('text/plain', str)
-    e.preventDefault()
+function copyToClip(string) {
+  function listener(event) {
+    event.clipboardData.setData('text/html', string)
+    event.clipboardData.setData('text/plain', string)
+    event.preventDefault()
   }
   document.addEventListener('copy', listener)
   document.execCommand('copy')
@@ -50,10 +50,11 @@ startButton1.addEventListener('click', () => {
   resultBox1.hidden = true
   errorBox1.hidden = true
 
-  fetch('/chart-machine/machine/1')
+  fetch('/chart-machine/machine/1', { method: 'POST' })
     .then((res) => res.json())
     .then((json) => {
       console.log(json)
+
       linkBox1.innerHTML = `<mark>${json.chart.publicUrl}</mark>`
       linkBox1.href = json.chart.publicUrl
 
@@ -73,6 +74,7 @@ startButton1.addEventListener('click', () => {
     })
     .catch((error) => {
       console.log(error)
+
       loader1.hidden = true
       resultBox1.hidden = true
       errorBox1.hidden = false
@@ -84,7 +86,7 @@ startButton2.addEventListener('click', () => {
   resultBox2.hidden = true
   errorBox2.hidden = true
 
-  fetch('/chart-machine/machine/2')
+  fetch('/chart-machine/machine/2', { method: 'POST' })
     .then((res) => res.json())
     .then((json) => {
       console.log(json)
@@ -107,6 +109,7 @@ startButton2.addEventListener('click', () => {
     })
     .catch((error) => {
       console.log(error)
+
       loader2.hidden = true
       resultBox2.hidden = true
       errorBox2.hidden = false

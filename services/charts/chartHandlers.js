@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 const config = require('../../config/config')
 
-const handleData = require('../data/handleData')
+const handleData = require('../../controllers/data/handleData')
 
 async function createChart() {
   console.log('creating chart...')
@@ -9,8 +9,8 @@ async function createChart() {
   const url = config.url
   const headers = config.headers
 
-  const chartId = await fetch(url + '/charts', {
-    headers, method: "POST"
+  const chartId = await fetch(`${url}/charts`, {
+    headers, method: 'POST'
   })
   .then(res => res.json())
   .then(json => json.data[0].id)
@@ -19,14 +19,15 @@ async function createChart() {
   return chartId
 }
 
-async function addData(vote, id) {
+async function addData(voteId, chartId) {
   console.log('adding data....')
-  const data = await handleData(vote)
 
   const url = config.url
   const headers = config.headers
 
-  const result = await fetch(`${url}/charts/${id}/data`, {
+  const data = await handleData(voteId)
+
+  const result = await fetch(`${url}/charts/${chartId}/data`, {
     headers,
     method: 'PUT',
     body: data
@@ -37,17 +38,17 @@ async function addData(vote, id) {
   return result
 }
 
-async function editChart(chartId, voteId) {
+async function editChart(voteId, chartId) {
   const title = config.titles[voteId]
-
-  const chartStyle = Object.assign(config.chartConfig, {title})
 
   const url = config.url
   const headers = config.headers
 
-  const result = await fetch(url + '/charts/' + chartId, {
+  const chartStyle = Object.assign(config.chartConfig, {title})
+
+  const result = await fetch(`${url}/charts/${chartId}`, {
     headers,
-    method: "PUT",
+    method: 'PUT',
     body: JSON.stringify(chartStyle)
   })
   .then(res => res.json())
@@ -63,9 +64,9 @@ async function publishChart(chartId) {
   const url = config.url
   const headers = config.headers
 
-  const result = await fetch(url + '/charts/' + chartId + '/publish', {
+  const result = await fetch(`${url}/charts/${chartId}/publish`, {
     headers,
-    method: "POST"
+    method: 'POST'
   })
   .then(res => res.json())
   .then(json => {

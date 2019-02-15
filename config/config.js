@@ -1,20 +1,20 @@
-const dataSource = "https://s3.eu-central-1.amazonaws.com/app-prod-static-voteinfo/v1/ogd/20190210_kant_Abstimmungsresultate_ogd.json"
+const dataSource = 'https://s3.eu-central-1.amazonaws.com/app-prod-static-voteinfo/v1/ogd/20190210_kant_Abstimmungsresultate_ogd.json'
 
 const bern = 1
 
 const titles = {
-  '1': "Wo das Energiegesetz angenommen wurde",
-  '2': "Wo das Polizeigesetz angenommen wurde"
+  '1': 'Wo das Energiegesetz angenommen wurde',
+  '2': 'Wo das Polizeigesetz angenommen wurde'
 }
 
 const dataHeaders = 'Codes,Namen,jaStimmenInProzent,jaStimmenAbsolut,neinStimmenAbsolut,stimmbeteiligungInProzent\n'
 
-const url = "https://api.datawrapper.de"
+const url = 'https://api.datawrapper.de'
 
 //eslint-disable-next-line
 const token = process.env.DATAWRAPPER_TOKEN
 const headers = {
-  "Authorization": `Bearer ${token}`
+  'Authorization': `Bearer ${token}`
 }
 
 const chartConfig = require('./chart')
@@ -40,13 +40,13 @@ const specialCasesMap = {
 }
 
 module.exports = {
-  dataSource,
-  url,
-  headers,
-  dataHeaders,
-  chartConfig,
   bern,
+  chartConfig,
+  dataHeaders,
+  dataSource,
+  headers,
   specialCases,
   specialCasesMap,
-  titles
+  titles,
+  url
 }
