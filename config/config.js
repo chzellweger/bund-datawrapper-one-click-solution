@@ -37,7 +37,7 @@ module.exports = {
   dataHeaders,
   dataSource,
   headers,
-  specialCases,
+  range,
   specialCasesMap,
   titles,
   url
