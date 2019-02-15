@@ -15,6 +15,6 @@ function globalErrorHandler(error, req, res, next) {
   }
 
 module.exports = {
-  pageNotFound,
-  globalErrorHandler
+  globalErrorHandler,
+  pageNotFound
 }
