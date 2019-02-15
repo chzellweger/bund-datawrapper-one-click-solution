@@ -29,7 +29,7 @@ router.post('/:voteId', async (req, res) => {
   } catch (error) {
     console.log(error)
 
-    res.status(500).json({ status: 'failed', message: error.message })
+    res.status(error.status || 500).json({ status: 'failed', message: error.message })
   }
 })
 

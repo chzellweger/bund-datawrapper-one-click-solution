@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000
 
 const routes = require('./routes/routes')
+const errorHandlers = require('./services/errors/errorHandlers')
 
 const app = express()
 
@@ -20,5 +21,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 app.use('/chart-machine', routes)
+
+//Catch 404-errors
+app.use(errorHandlers.pageNotFound);
+
+//Global error handler
+app.use(errorHandlers.globalErrorHandler);
+
 
 app.listen(port, () => console.log(`chart-machine is listening on port ${port}!`))
