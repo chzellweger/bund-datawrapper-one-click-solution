@@ -7,6 +7,8 @@ const titles = {
   '2': 'Wo das Polizeigesetz angenommen wurde'
 }
 
+const range = Object.keys(titles).length
+
 const dataHeaders = 'Codes,Namen,jaStimmenInProzent,jaStimmenAbsolut,neinStimmenAbsolut,stimmbeteiligungInProzent\n'
 
 const url = 'https://api.datawrapper.de'
@@ -18,16 +20,6 @@ const headers = {
 }
 
 const chartConfig = require('./chart')
-
-const specialCases = [
-  661,
-  535,
-  408,
-  389,
-  877,
-  422,
-  664
-]
 
 const specialCasesMap = {
   661: {number: 669, name: 'Clavaleyres'},

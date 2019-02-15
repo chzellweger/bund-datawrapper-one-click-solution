@@ -40,11 +40,12 @@ async function getData(voteId) {
 function shapeData(data) {
   //'Codes,Namen,jaStimmenInProzent,jaStimmenAbsolut,neinStimmenAbsolut,stimmbeteiligungInProzent\n'
   const headers = config.dataHeaders
+  const specialCases = Object.keys(config.specialCasesMap).map(el => parseInt(el))
 
   let output = headers
 
   data.gemeinden.forEach((g) => {
-    if (config.specialCases.includes(g.geoLevelnummer)) {
+    if (specialCases.includes(g.geoLevelnummer)) {
       return
     }
 
