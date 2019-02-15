@@ -4,6 +4,7 @@ const router = require('express').Router()
 const csvjson = require('csvjson')
 
 const checkParams = require('../../services/middleware/middleware').checkParams
+
 const handleData = require('../../controllers/data/handleData')
 
 router.get('/:voteId', checkParams, async (req, res) => {
@@ -28,7 +29,7 @@ router.get('/:voteId', checkParams, async (req, res) => {
   } catch (error) {
     console.log(error)
 
-    res.status(400).json({status: 'failed', message: error.message})
+    res.status(error.status || 500).json({status: 'failed', message: error.message})
   }
 })
 
