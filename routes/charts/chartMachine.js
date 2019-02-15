@@ -2,6 +2,7 @@
 const router = require('express').Router()
 
 const checkParams = require('../../services/middleware/middleware').checkParams
+
 const handleCharts = require('../../controllers/charts/handleCharts')
 
 router.post('/:voteId', checkParams, async (req, res) => {
