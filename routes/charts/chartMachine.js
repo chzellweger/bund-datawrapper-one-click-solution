@@ -1,20 +1,13 @@
 //eslint-disable-next-line
 const router = require('express').Router()
 
+const checkParams = require('../../services/middleware/middleware').checkParams
 const handleCharts = require('../../controllers/charts/handleCharts')
 
-router.post('/:voteId', async (req, res) => {
+router.post('/:voteId', checkParams, async (req, res) => {
   console.log(req.params)
 
   const voteId = req.params.voteId
-
-  if (!Number.isInteger(parseInt(voteId))) {
-    res.status(400).json({
-      status: 'failed',
-      message: `cannot create chart with vote-id ${voteId}. Use an integer as vote-id.`
-    })
-    return
-  }
 
   try {
     const publicUrl = await handleCharts(voteId)

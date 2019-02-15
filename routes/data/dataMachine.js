@@ -3,18 +3,11 @@ const router = require('express').Router()
 
 const csvjson = require('csvjson')
 
+const checkParams = require('../../services/middleware/middleware').checkParams
 const handleData = require('../../controllers/data/handleData')
 
-router.get('/:voteId', async (req, res) => {
+router.get('/:voteId', checkParams, async (req, res) => {
   const voteId = req.params.voteId
-
-  if (!Number.isInteger(parseInt(voteId))) {
-    res.status(400).json({
-      status: 'failed',
-      message: `cannot create chart with vote-id ${voteId}. Use an integer as vote-id.`
-    })
-    return
-  }
 
   try {
     const requestDataType = req.query['data-type']
