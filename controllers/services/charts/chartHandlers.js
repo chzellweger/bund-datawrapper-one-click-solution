@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
-const config = require('../../config/config')
+const config = require('../../../config/config')
 
-const handleData = require('../../controllers/data/handleData')
+const handleData = require('../../data/handleData')
 
 async function createChart() {
   console.log('creating chart...')

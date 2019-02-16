@@ -1,4 +1,4 @@
-const chartHandlers = require('../../services/charts/chartHandlers')
+const chartHandlers = require('../../controllers/services/charts/chartHandlers')
 
 const handleCharts = async (voteId) => {
   console.log('spinning up chart-machine...')

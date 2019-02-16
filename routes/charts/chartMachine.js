@@ -1,7 +1,7 @@
 //eslint-disable-next-line
 const router = require('express').Router()
 
-const checkParams = require('../../services/middleware/middleware').checkParams
+const checkParams = require('../../controllers/services/middleware/middleware').checkParams
 
 const handleCharts = require('../../controllers/charts/handleCharts')
 

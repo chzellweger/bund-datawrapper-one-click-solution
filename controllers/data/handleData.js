@@ -1,7 +1,8 @@
-const dataHandlers = require('../../services/data/dataHandlers')
+const dataHandlers = require('../../controllers/services/data/dataHandlers')
 
 async function handleData(voteId) {
   try {
+    console.log('handleData')
     const data = await dataHandlers.getData(voteId)
 
     let output = dataHandlers.shapeData(data)

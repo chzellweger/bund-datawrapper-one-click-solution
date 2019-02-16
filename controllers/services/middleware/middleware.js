@@ -1,4 +1,4 @@
-const config = require('../../config/config')
+const config = require('../../../config/config')
 
 function checkParams(req, res, next) {
   const voteId = req.params.voteId

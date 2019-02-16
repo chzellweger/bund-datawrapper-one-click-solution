@@ -1,10 +1,11 @@
 const fetch = require('node-fetch')
-const config = require('../../config/config')
+const config = require('../../../config/config')
 
 const url = config.dataSource
 const bern = config.bern
 
 async function getData(voteId) {
+  console.log(getData, voteId)
   const vote = parseInt(voteId) - 1
 
   return fetch(url, {
@@ -40,7 +41,7 @@ async function getData(voteId) {
 function shapeData(data) {
   //'Codes,Namen,jaStimmenInProzent,jaStimmenAbsolut,neinStimmenAbsolut,stimmbeteiligungInProzent\n'
   const headers = config.dataHeaders
-  const specialCases = Object.keys(config.specialCasesMap).map(el => parseInt(el))
+  const specialCases = Object.keys(config.specialCasesMap)
 
   let output = headers
 
@@ -65,12 +66,12 @@ function shapeData(data) {
 function handleSpecialCases(inputString, data) {
   let outputString = inputString
 
-  const specialCases = Object.keys(config.specialCasesMap).map(el => parseInt(el))
+  const specialCases = Object.keys(config.specialCasesMap)
   const specialCasesMap = config.specialCasesMap
 
   specialCases.forEach((specialCase) => {
     const specialCaseMappedNumber =
-      specialCasesMap[specialCase.toString()]['number']
+      specialCasesMap[specialCase]['number']
 
     const mappedGemeinde = data.gemeinden.find((el) => {
       return specialCaseMappedNumber.toString() === el.geoLevelnummer

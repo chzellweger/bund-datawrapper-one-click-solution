@@ -3,7 +3,7 @@ const router = require('express').Router()
 
 const csvjson = require('csvjson')
 
-const checkParams = require('../../services/middleware/middleware').checkParams
+const checkParams = require('../../controllers/services/middleware/middleware').checkParams
 
 const handleData = require('../../controllers/data/handleData')
 
