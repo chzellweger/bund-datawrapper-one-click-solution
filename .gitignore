@@ -2,3 +2,4 @@
 config/chartData.js
 node_modules
 .nyc_output
+dist

@@ -8,7 +8,7 @@
     "postinstall": "npm run build-ts",
     "start": "npm run serve",
     "serve": "node dist/index.js",
-    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "start:dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
     "prod": "tsc && node ./dist/index.js",
     "test": "jasmine-ts --config=jasmine.json",
     "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" jasmine-ts --config=jasmine.json && nyc report"
