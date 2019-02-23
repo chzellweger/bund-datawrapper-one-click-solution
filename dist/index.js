@@ -12,7 +12,7 @@ const app = express();
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use('/chart-machine', routes_1.router);
 //Catch 404-errors
 app.use(errorHandlers_1.default.pageNotFound);
