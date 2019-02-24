@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build-ts": "tsc",
-    "postinstall": "npm run build-ts && npm run copy-static",
+    "postinstall": "npm run build-ts && npm run copy-static && copy-env",
     "copy-static": "copyfiles --up 1 src/**/*.html src/**/*.css src/**/*.js dist/",
+    "copy-env": "copyfiles .env dist/",
     "start": "npm run serve",
     "serve": "node dist/index.js",
     "start:dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
