@@ -6,7 +6,7 @@
   "scripts": {
     "build-ts": "tsc",
     "postinstall": "npm run build-ts && npm run copy-static",
-    "copy-static": "copyfiles src/public/html src/public/*.css src/public/*.js dist/",
+    "copy-static": "copyfiles src/public/*.html src/public/*.css src/public/*.js dist/public/",
     "start": "npm run serve",
     "serve": "node dist/index.js",
     "start:dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
