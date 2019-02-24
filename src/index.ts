@@ -24,6 +24,8 @@ app.use('/chart-machine', routes)
 //Catch 404-errors
 app.use(errorHandlers.pageNotFound);
 
+console.log(process.env)
+
 //Global error handler
 app.use(errorHandlers.globalErrorHandler);
 
