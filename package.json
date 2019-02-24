@@ -27,7 +27,7 @@
     "ts-node": "^8.0.2",
     "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.3.3",
-    "@types/json2csv": "^4.2.0",
+    "@types/json2csv": "^4.2.0"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
