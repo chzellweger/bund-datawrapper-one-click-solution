@@ -26,10 +26,10 @@
     "nyc": "^13.3.0",
     "ts-node": "^8.0.2",
     "ts-node-dev": "^1.0.0-pre.32",
-    "typescript": "^3.3.3"
+    "typescript": "^3.3.3",
+    "@types/json2csv": "^4.2.0",
   },
   "dependencies": {
-    "@types/json2csv": "^4.2.0",
     "body-parser": "^1.18.3",
     "csvjson": "^5.1.0",
     "dotenv": "^6.2.0",
