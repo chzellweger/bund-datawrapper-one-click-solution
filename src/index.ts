@@ -27,4 +27,5 @@ app.use(errorHandlers.pageNotFound);
 //Global error handler
 app.use(errorHandlers.globalErrorHandler);
 
+console.log(process.env)
 app.listen(port, () => console.log(`chart-machine is listening on port ${port}!`))

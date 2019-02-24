@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+import fetch from 'node-fetch'
 
 import config from '../../config/config'
 
@@ -16,7 +16,7 @@ async function createChart(): Promise<string>{
   })
   .then(async (res: any) => {
     const json = await res.json()
-    return json.data[0].id
+    return getId(json)
   })
   .catch((error: Error) => error)
 
@@ -82,21 +82,29 @@ async function publishChart(chartId: String) {
   .then((res: any) => res.json())
   .then((json: any) => {
     console.log(json)
-    return {
-      chartId: json.data.id,
-      publicUrl: json.data.publicUrl,
-      embed: json.data.metadata.publish['embed-codes'],
-      publishedAt: json.data.publishedAt
-    }
+    return getChartInfo(json)
   })
   .catch((error: Error) => error)
 
   return result
 }
 
+function getId (data: any) { return data.data[0].id }
+
+function getChartInfo(json: any) {
+  return {
+    chartId: json.data.id,
+    publicUrl: json.data.publicUrl,
+    embed: json.data.metadata.publish['embed-codes'],
+    publishedAt: json.data.publishedAt
+  }
+}
+
 export default {
   createChart,
   addData,
   editChart,
-  publishChart
+  publishChart,
+  getId,
+  getChartInfo
 }

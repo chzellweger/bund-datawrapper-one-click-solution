@@ -15,7 +15,6 @@ const handleCharts = async (voteId: string) => {
 
     console.log('now, publish your chart...')
     const publicUrl = await chartHandlers.publishChart(chartId)
-    console.log(publicUrl.publicUrl)
 
     return publicUrl
   } catch (error) {
