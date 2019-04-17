@@ -5,20 +5,21 @@ import config from '../../config/config'
 import { handleData } from '../../controllers/data/handleData'
 import dataHandlers from '../data/dataHandlers'
 
-async function createChart(): Promise<string>{
+async function createChart(): Promise<string> {
   console.log('creating chart...')
 
   const url = config.url
   const headers = config.headers
 
   const chartId = await fetch(`${url}/charts`, {
-    headers, method: 'POST'
+    headers,
+    method: 'POST'
   })
-  .then(async (res: any) => {
-    const json = await res.json()
-    return getId(json)
-  })
-  .catch((error: Error) => error)
+    .then(async (res: any) => {
+      const json = await res.json()
+      return getId(json)
+    })
+    .catch((error: Error) => error)
 
   return chartId
 }
@@ -38,39 +39,39 @@ async function addData(voteId: string, chartId: string): Promise<Object> {
     method: 'PUT',
     body: csv
   })
-  .then(async (res:any) => {
-    const json = await res.json()
-    return json
-  })
-  .catch((error: Error) => error)
+    .then(async (res: any) => {
+      const json = await res.json()
+      return json
+    })
+    .catch((error: Error) => error)
 
   return result
 }
 
-async function editChart(voteId: string, chartId: string): Promise<Object>{
+async function editChart(voteId: string, chartId: string): Promise<Object> {
   const title = config.titles[voteId]
 
   const url = config.url
   const headers = config.headers
 
-  const chartStyle = Object.assign(config.chartConfig, {title})
+  const chartStyle = Object.assign(config.chartConfig, { title })
 
   const result = await fetch(`${url}/charts/${chartId}`, {
     headers,
     method: 'PUT',
     body: JSON.stringify(chartStyle)
   })
-  .then(async (res: any) => {
-    const json = await res.json()
-    return json
-  })
-  .catch((error: Error) => error)
+    .then(async (res: any) => {
+      const json = await res.json()
+      return json
+    })
+    .catch((error: Error) => error)
 
   return result
 }
 
 async function publishChart(chartId: String) {
-  console.log('tryin\' to publish your chart...')
+  console.log("tryin' to publish your chart...")
 
   const url = config.url
   const headers = config.headers
@@ -79,17 +80,19 @@ async function publishChart(chartId: String) {
     headers,
     method: 'POST'
   })
-  .then((res: any) => res.json())
-  .then((json: any) => {
-    console.log(json)
-    return getChartInfo(json)
-  })
-  .catch((error: Error) => error)
+    .then((res: any) => res.json())
+    .then((json: any) => {
+      console.log(json)
+      return getChartInfo(json)
+    })
+    .catch((error: Error) => error)
 
   return result
 }
 
-function getId (data: any) { return data.data[0].id }
+function getId(data: any) {
+  return data.data[0].id
+}
 
 function getChartInfo(json: any) {
   return {

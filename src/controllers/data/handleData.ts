@@ -1,17 +1,19 @@
-import dataHandlers from '../../services/data/dataHandlers'
-import OutputData from '../../models/outputData'
+import dataHandlers from '../../services/data/dataHandlers';
+import OutputData from '../../models/outputData';
 
-export const handleData = async function handleData(voteId: string): Promise<OutputData[]> {
+export const handleData = async function handleData(
+  voteId: string
+): Promise<OutputData[]> {
   try {
-    const rawData = await dataHandlers.getData(voteId)
+    const rawData = await dataHandlers.getData(voteId);
 
-    const shapedData = dataHandlers.shapeDataToJson(rawData)
+    const shapedData = dataHandlers.shapeDataToJson(rawData);
 
-    const output = dataHandlers.handleSpecialCasesJson(rawData, shapedData)
-    console.log(output)
+    const output = dataHandlers.handleSpecialCasesJson(rawData, shapedData);
+    console.log(output);
 
-    return output
+    return output;
   } catch (error) {
-    return error
+    return error;
   }
-}
+};

@@ -1,19 +1,18 @@
-import dataHandlers from '../src/services/data/dataHandlers';
-import chartHandlers from '../src/services/charts/chartHandlers';
-
-import handleCharts from '../src/controllers/charts/handleCharts';
-import chartMachine from '../src/routes/charts/chartMachine';
-
 import { Gemeinde, Resultat, Vorlage } from '../src/models/sourceData';
-
 import OutputData from '../src/models/outputData';
+
 import mockData from './mockData';
 import mockResForCreateChart from './mockResForCreateChart';
 import mockResForPublishChart from './mockResforPublishChart';
 
-describe('dataHandler', () => {
-  describe('has a service called shapeGemeinde', () => {
-    it('returns a correctly shaped Gemeinde', () => {
+import dataHandlers from '../src/services/data/dataHandlers';
+import chartHandlers from '../src/services/charts/chartHandlers';
+import handleCharts from '../src/controllers/charts/handleCharts';
+import chartMachine from '../src/routes/charts/chartMachine';
+
+describe('dataHandlers has a service called', () => {
+  describe('shapeGemeinde', () => {
+    it(', it returns a correctly shaped Gemeinde', () => {
       const gemeinde: Gemeinde = {
         geoLevelnummer: '1',
         geoLevelname: 'test',
@@ -43,7 +42,7 @@ describe('dataHandler', () => {
     });
   });
 
-  describe('has a service called handleSpecialCase', () => {
+  describe('handleSpecialCase', () => {
     // values of 389: Meienried should equal 383: Büren an der Aare
     const gemeindeNummer = 389;
     const gemeindeName = 'Meienried';
@@ -56,25 +55,25 @@ describe('dataHandler', () => {
       result = dataHandlers.handleSpecialCase(gemeindeNummer, vorlage);
     });
 
-    it('keeps the special cases name', () => {
+    it(', it keeps the special cases name', () => {
       expect(result['Namen']).toBe(gemeindeName);
     });
 
-    it('adds the right values', () => {
+    it(', it adds the right values', () => {
       expect(result['jaStimmenInProzent']).toBe(42.387732749);
     });
   });
 });
 
-describe('chartHandlers', () => {
-  describe('has a service called getId, it', () => {
-    it('returns a chart id from the api response', () => {
+describe('chartHandlers has a service called', () => {
+  describe('getId', () => {
+    it(', it returns a chart id from the api response', () => {
       expect(chartHandlers.getId(mockResForCreateChart)).toBe('aBcDe');
     });
   });
 
-  describe('has a service called getChartInfo, it', () => {
-    it('returns an object of infos for a publish-response from the api', () => {
+  describe('getChartInfo', () => {
+    it(', it returns an object of infos for a publish-response from the api', () => {
       const response = {
         chartId: 'nDfLw',
         publicUrl: '//datawrapper.dwcdn.net/nDfLw/2/',

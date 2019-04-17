@@ -22,9 +22,11 @@ app.use(express.static(__dirname + '/public'))
 app.use('/chart-machine', routes)
 
 //Catch 404-errors
-app.use(errorHandlers.pageNotFound);
+app.use(errorHandlers.pageNotFound)
 
 //Global error handler
-app.use(errorHandlers.globalErrorHandler);
+app.use(errorHandlers.globalErrorHandler)
 
-app.listen(port, () => console.log(`chart-machine is listening on port ${port}!`))
+app.listen(port, () =>
+  console.log(`chart-machine is listening on port ${port}!`)
+)

@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express'
 
 //eslint-disable-next-line
 const router = require('express').Router()
 
-import {checkParams}  from '../../services/middleware/middleware'
+import { checkParams } from '../../services/middleware/middleware'
 
 import handleCharts from '../../controllers/charts/handleCharts'
 
@@ -25,7 +25,9 @@ router.post('/:voteId', checkParams, async (req: Request, res: Response) => {
   } catch (error) {
     console.log(error)
 
-    res.status(error.status || 500).json({ status: 'failed', message: error.message })
+    res
+      .status(error.status || 500)
+      .json({ status: 'failed', message: error.message })
   }
 })
 
