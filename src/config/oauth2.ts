@@ -142,7 +142,7 @@ router.get(
     if (req.user.provider === 'derbund.ch') {
       res.redirect('/dashboard')
     } else {
-      res.redirect('/')
+      res.redirect('/auth/login')
     }
   }
 )
