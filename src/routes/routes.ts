@@ -3,7 +3,7 @@ const router = require('express').Router()
 
 import { Request, Response, NextFunction } from 'express'
 
-import { router as auth, authRequired } from '../config/oauth2'
+import { router as auth, authRequired } from './login/oauth2'
 
 import chartMachine from './charts/chartMachine'
 import dataMachine from './data/dataMachine'

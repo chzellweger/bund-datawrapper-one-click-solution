@@ -29,7 +29,7 @@ app.use(session(config.sessionConfig))
 
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(require('./config/oauth2').router)
+app.use(require('./routes/login/oauth2').router)
 
 app.use('/', routes)
 app.use(express.static(__dirname + '/public'))
