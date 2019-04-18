@@ -25,7 +25,11 @@ export function checkParams(req: Request, res: Response, next: NextFunction) {
   next()
 }
 
-export async function checkLogin(req: Request, res: Response, next: NextFunction) {
+export async function checkLogin(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const url = config.url
   const headers = config.headers
   const loggedIn = await fetch(`${url}/account`, { headers })
