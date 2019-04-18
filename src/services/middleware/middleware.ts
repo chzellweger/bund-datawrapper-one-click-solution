@@ -25,24 +25,24 @@ export function checkParams(req: Request, res: Response, next: NextFunction) {
   next()
 }
 
-export async function checkLogin(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  const url = config.url
-  const headers = config.headers
-  const loggedIn = await fetch(`${url}/account`, { headers })
-    .then((res: any) => res.json())
-    .then((res: any) => {
-      console.log(res.data.user.id)
-      return res.data.user.id
-    })
+// export async function checkLogin(
+//   req: Request,
+//   res: Response,
+//   next: NextFunction
+// ) {
+//   const url = config.url
+//   const headers = config.headers
+//   const loggedIn = await fetch(`${url}/account`, { headers })
+//     .then((res: any) => res.json())
+//     .then((res: any) => {
+//       console.log(res.data.user.id)
+//       return res.data.user.id
+//     })
 
-  if (loggedIn) {
-    req.loggedIn = true
-  } else {
-    req.loggedIn = false
-  }
-  next()
-}
+//   if (loggedIn) {
+//     req.loggedIn = true
+//   } else {
+//     req.loggedIn = false
+//   }
+//   next()
+// }

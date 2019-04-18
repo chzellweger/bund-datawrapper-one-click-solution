@@ -9,7 +9,7 @@ import chartMachine from './charts/chartMachine'
 import dataMachine from './data/dataMachine'
 
 router.get('/dashboard', authRequired, (req: Request, res: Response) => {
-  res.sendFile('/public/index.html', { root: global.__basedir })
+  res.sendFile('/public/index.html', { root: (global as any).__basedir })
 })
 
 router.use('/chart-machine/machine', chartMachine)
