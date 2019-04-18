@@ -13,8 +13,7 @@ import { router as routes } from './routes/routes'
 import errorHandlers from './services/errors/errorHandlers'
 
 import config from './config/config'
-
-global.__basedir = __dirname
+;(global as any).__basedir = __dirname
 
 //eslint-disable-next-line
 const port = process.env.PORT || 3000
