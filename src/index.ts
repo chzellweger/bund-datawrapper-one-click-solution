@@ -5,7 +5,9 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
-const session = require('express-session')
+
+const cookieSession = require('cookie-session')
+
 const passport = require('passport')
 
 import { router as routes } from './routes/routes'
@@ -25,7 +27,7 @@ app.use(helmet())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use(session(config.sessionConfig))
+app.use(cookieSession({ keys: ['key1', 'key2'] }))
 
 app.use(passport.initialize())
 app.use(passport.session())
